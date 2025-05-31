@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Timestamp Difference Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    input {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      width: 300px;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Timestamp Difference Calculator</h1>
+  
+  <label for="timestamp1">Timestamp 1 (ms):</label><br/>
+  <input type="number" id="timestamp1" placeholder="e.g. 1748630645311" /><br/>
+
+  <label for="timestamp2">Timestamp 2 (ms):</label><br/>
+  <input type="number" id="timestamp2" placeholder="e.g. 1748630647641" /><br/>
+
+  <button onclick="calculateDiff()">Calculate Difference</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function calculateDiff() {
+      const ts1 = parseInt(document.getElementById("timestamp1").value, 10);
+      const ts2 = parseInt(document.getElementById("timestamp2").value, 10);
+
+      if (isNaN(ts1) || isNaN(ts2)) {
+        document.getElementById("result").innerText = "Please enter valid numbers for both timestamps.";
+        return;
+      }
+
+      const diffSeconds = Math.abs(ts2 - ts1) / 1000;
+      document.getElementById("result").innerText = `Difference: ${diffSeconds} seconds`;
+    }
+  </script>
+</body>
+</html>
